@@ -1,13 +1,13 @@
 import * as sharp from 'sharp';
 
 export async function resizeImage(
-  inputPath: string,
-  outputPath: string,
+  originalImagePath: string,
+  newImagePath: string,
   targetDimension: number,
 ): Promise<void> {
-  await sharp(inputPath)
+  await sharp(originalImagePath)
     .resize(targetDimension, targetDimension, {
       fit: sharp.fit.inside,
     })
-    .toFile(outputPath);
+    .toFile(newImagePath);
 }
