@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNumber, Max, IsPositive, Validate } from 'class-validator';
+import { IsString, IsNumber, IsPositive, Validate } from 'class-validator';
 import { IsUrlAccessible } from 'src/shared/decorators/is_url_accessible.decorator';
 import { IsCompress } from '../validator/compress.validator';
 
@@ -20,7 +20,7 @@ export class CreateImageDto {
   @ApiProperty({
     description:
       'The compression ratio of the image must be greater than 0 and less than or equal to 1.',
-    example: 0.9,
+    example: 15,
   })
   compress: number;
 }
