@@ -6,12 +6,6 @@
   <img alt="Licença" src="https://img.shields.io/github/license/moisespompilio/api-trakto?color=56BEB8">
 </p>
 <p align="center">
-  <a href="#dart-sobre">Sobre</a> &#xa0; | &#xa0; 
-  <a href="#sparkles-funcionalidades">Funcionalidades</a> &#xa0; | &#xa0;
-  <a href="#rocket-tecnologias">Tecnologias</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-requisitos">Requisitos</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-iniciando">Iniciando</a> &#xa0; | &#xa0;
-  <a href="#memo-licença">Licença</a> &#xa0; | &#xa0;
   <a href="https://github.com/moisespompilio" target="_blank">Autor</a>
 </p>
 <br>
@@ -74,7 +68,7 @@ $ docker-compose up --build
 :memo: Licença
 Este projeto está sob licença do MIT. Para mais detalhes, consulte o arquivo LICENSE.
 
-Feito com :heart: por <a href="https://github.com/moisespompilio" target="_blank">seu-nome</a>
+Feito com :heart: por <a href="https://github.com/moisespompilio" target="_blank">Moises Pompilio</a>
 
  
 
