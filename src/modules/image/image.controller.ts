@@ -1,8 +1,9 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, UseFilters } from '@nestjs/common';
 import { ImageService } from './image.service';
-import { CreateImageDto } from './dto/create-image.dto';
+import { CreateImage } from './model/create-image.model';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { Image } from './entities/image.entity';
+import { Image } from './schema/image.schema';
+import { CustomExceptionFilter } from 'src/shared/exceptions/custom-exception-filter.exception';
 
 @ApiTags('image')
 @Controller('image')
@@ -23,8 +24,9 @@ export class ImageController {
     status: 500,
     description: 'erro interno ao fazer a operação',
   })
+  @UseFilters(new CustomExceptionFilter())
   @Post()
-  save(@Body() createImageDto: CreateImageDto) {
+  save(@Body() createImageDto: CreateImage) {
     return this.imageService.save(createImageDto);
   }
 }
