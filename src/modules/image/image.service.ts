@@ -6,9 +6,9 @@ import { downloadImage } from 'src/shared/util/download-image.util';
 import { compressAndResizeImage } from 'src/shared/util/compress-and-resize-Image.util';
 import { PathsImages } from './model/paths-images.model';
 import { imageConfigManager } from 'src/config/image/image-config-manager';
-import { extratMetadata } from 'src/shared/util/extrat-metadata.util';
+import { extractMetadata } from 'src/shared/util/extrat-metadata.util';
 import { Image, ImageDocument } from './schema/image.schema';
-import { excludeFile } from 'src/shared/util/exclude-file.util';
+import { deleteFile } from 'src/shared/util/delete-file.util';
 
 @Injectable()
 export class ImageService {
@@ -16,11 +16,11 @@ export class ImageService {
     @InjectModel(Image.name) private readonly imageModel: Model<ImageDocument>,
   ) {}
 
-  async save(createImageDto: CreateImage) {
+  async save(createImageModel: CreateImage) {
     const imagesPaths = new PathsImages();
     try {
-      await downloadImage(createImageDto.image, imagesPaths.imagePathOrigin);
-      const metadata = await extratMetadata(imagesPaths.imagePathOrigin);
+      await downloadImage(createImageModel.image, imagesPaths.imagePathOrigin);
+      const metadata = await extractMetadata(imagesPaths.imagePathOrigin);
       await compressAndResizeImage(
         imagesPaths.imagePathOrigin,
         imageConfigManager.maxDimension() < metadata.width
@@ -29,7 +29,7 @@ export class ImageService {
         imageConfigManager.maxDimension() < metadata.height
           ? imageConfigManager.maxDimension()
           : metadata.height,
-        createImageDto.compress,
+        createImageModel.compress,
         imagesPaths.imagePathThumb,
       );
       const output: Image = {
@@ -43,8 +43,8 @@ export class ImageService {
       await createImage.save();
       return createImage;
     } catch (error) {
-      excludeFile(imagesPaths.imagePathOrigin);
-      excludeFile(imagesPaths.imagePathThumb);
+      deleteFile(imagesPaths.imagePathOrigin);
+      deleteFile(imagesPaths.imagePathThumb);
       throw error;
     }
   }
