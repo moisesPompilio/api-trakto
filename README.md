@@ -15,22 +15,31 @@ O projeto foi desenvolvido utilizando NestJS com TypeScript. Ele consiste em um 
 A estrutura do projeto segue as seguintes disposições de pastas:
 
 node_modules: Pasta que armazena os módulos do Node.js.
+
 src: Pasta que contém o código-fonte do projeto.
+
 config: Pasta que contém as configurações do projeto.
+
 image: Responsável por criar a pasta "image" na raiz do projeto, caso não exista, e armazenar os caminhos para essa pasta.
+
 swagger: Contém as configurações do Swagger para documentar o código.
+
 modules: Pasta que contém os módulos do projeto, onde o principal é o módulo "image".
+
 model: Pasta que define o modelo da requisição.
-pathvariable: Responsável por criar nomes únicos para as imagens a serem armazenadas pelo sistema.
+
+pathvariable: Responsável por criar nomes únicos para as 
+imagens a serem armazenadas pelo sistema.
+
 schema: Pasta que contém o schema e o documento da imagem para serem salvos no banco de dados.
-image.service: Arquivo que contém a lógica de negócio do módulo "image".
-image.controller: Arquivo que contém os controladores do módulo "image".
-image.module: Arquivo que define o módulo "image".
+
 share: Pasta que contém as funcionalidades compartilhadas.
 decorator: Pasta que armazena os decoradores personalizados.
+
 util: Pasta que contém funções de auxílio.
+
 exception: Pasta que contém as exceções personalizadas.
-Para iniciar o projeto, é possível utilizar o Docker com o comando docker-compose up --build, que instanciará tudo, incluindo o banco de dados MongoDB. Também é possível iniciar o projeto diretamente com os comandos npm run start ou npm run start:dev para desenvolvedor. Antes de iniciar o projeto, certifique-se de criar o arquivo .env e preencher as variáveis de ambiente conforme o exemplo disponível em .env.example.
+
 
 :sparkles: Funcionalidades
 Realizar busca por link da image.
