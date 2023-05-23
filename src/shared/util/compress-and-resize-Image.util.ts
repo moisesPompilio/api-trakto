@@ -11,7 +11,7 @@ export async function compressAndResizeImage(
   try {
     await sharp(originalImagePath)
       .resize(widtDimension, heightDimension, {
-        fit: sharp.fit.inside,
+        fit: 'inside',
       })
       .jpeg({ quality: compressionFactor })
       .toFile(newImagePath);

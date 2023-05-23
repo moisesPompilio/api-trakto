@@ -10,13 +10,17 @@ export function IsUrlWithCodeExcption(validationOptions?: ValidationOptions) {
       options: validationOptions,
       validator: {
         validate(value: any) {
-          const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
-          if (typeof value !== 'string' || !urlRegex.test(value)) {
-            throw new InvalidInputException(`That link ${value} is invalid`);
-          }
-          return true;
+          return validateIsUrl(value);
         },
       },
     });
   };
 }
+
+const validateIsUrl = (value: any): boolean => {
+  const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+  if (typeof value !== 'string' || !urlRegex.test(value)) {
+    throw new InvalidInputException(`That link ${value} is invalid`);
+  }
+  return true;
+};
