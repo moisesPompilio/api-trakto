@@ -1,6 +1,7 @@
 import { Catch, ArgumentsHost, HttpException } from '@nestjs/common';
 import { BaseExceptionFilter } from '@nestjs/core';
 import { Response } from 'express';
+import { customTipeException } from './custom-type.exceptio';
 
 @Catch(HttpException)
 export class CustomExceptionFilter extends BaseExceptionFilter {
@@ -10,11 +11,14 @@ export class CustomExceptionFilter extends BaseExceptionFilter {
 
     const status = exception.getStatus();
 
-    let errors: { code: string; message: string }[] = [];
+    const errors: customTipeException = { error: [] };
 
     if (typeof exception.getResponse() === 'string') {
       // Caso seja uma string, tratar como uma única mensagem de erro
-      errors.push({ code: 'EXCEPTION', message: `${exception.getResponse()}` });
+      errors.error.push({
+        code: 'EXCEPTION',
+        message: `${exception.getResponse()}`,
+      });
     } else {
       const originalError = exception.getResponse() as { message: string[] };
       const codeResponse = exception.getResponse() as { code: string };
@@ -23,22 +27,18 @@ export class CustomExceptionFilter extends BaseExceptionFilter {
       }
 
       if (originalError.message instanceof Array) {
-        errors = originalError.message.map((message: string) => ({
+        errors.error = originalError.message.map((message: string) => ({
           code: codeResponse.code,
           message,
         }));
       } else {
-        errors.push({
+        errors.error.push({
           code: codeResponse.code,
           message: `${originalError.message}`,
         });
       }
     }
 
-    const errorResponse = {
-      errors,
-    };
-
-    response.status(status).json(errorResponse);
+    response.status(status).json(errors);
   }
 }

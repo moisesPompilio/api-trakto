@@ -4,6 +4,7 @@ import { CreateImage } from './model/create-image.model';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Image } from './schema/image.schema';
 import { CustomExceptionFilter } from 'src/shared/exceptions/custom-exception-filter.exception';
+import { customTipeException } from 'src/shared/exceptions/custom-type.exceptio';
 
 @ApiTags('image')
 @Controller('image')
@@ -12,17 +13,23 @@ export class ImageController {
 
   @ApiOperation({
     summary:
-      'Salvar imagem e salvar copia da imagem com redimesionamento dela de maneira correta e compactar conforme os dados passado',
+      'Save image and save a copy of the image with correct resizing and compress according to the data passed',
   })
   @ApiResponse({
     status: 201,
     description:
-      'Salvar imagem correto e retorna dos paths das imagens e metadata da imagem original',
+      'Save image correct and return image paths and original image metadata',
     type: Image,
   })
   @ApiResponse({
     status: 500,
-    description: 'erro interno ao fazer a operação',
+    description: 'internal error when doing the operation',
+    type: customTipeException,
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'request has an error',
+    type: customTipeException,
   })
   @UseFilters(new CustomExceptionFilter())
   @Post()
