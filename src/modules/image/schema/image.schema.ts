@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { ApiProperty } from '@nestjs/swagger';
-import sharp from 'sharp';
+import * as sharp from 'sharp';
 
 export type ImageDocument = Image & Document;
 

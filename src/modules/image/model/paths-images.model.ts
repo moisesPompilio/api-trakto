@@ -1,4 +1,4 @@
-import { imageConfigManager } from 'src/config/image/image-config-manager';
+import { imageConfigManager } from '../../../config/image/image-config-manager';
 import { v4 as uuidv4 } from 'uuid';
 
 export class PathsImages {

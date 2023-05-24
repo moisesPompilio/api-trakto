@@ -3,8 +3,8 @@ import { ImageService } from './image.service';
 import { CreateImage } from './model/create-image.model';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Image } from './schema/image.schema';
-import { CustomExceptionFilter } from 'src/shared/exceptions/custom-exception-filter.exception';
-import { customTipeException } from 'src/shared/exceptions/custom-type.exceptio';
+import { CustomExceptionFilter } from '../../shared/exceptions/custom-exception-filter.exception';
+import { customTipeException } from '../../shared/exceptions/custom-type.exceptio';
 
 @ApiTags('image')
 @Controller('image')

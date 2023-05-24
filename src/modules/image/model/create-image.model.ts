@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsCompress } from '../../../shared/decorators/Is-compress.decorator';
-import { IsUrlWithCodeExcption } from 'src/shared/decorators/is-url.-with-code-exception.decorator';
+import { IsUrlWithCodeExcption } from '../../../shared/decorators/is-url.-with-code-exception.decorator';
 
 export class CreateImage {
   @ApiProperty({
